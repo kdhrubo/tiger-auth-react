@@ -30,6 +30,7 @@ class AuthService {
   }
 
   login() {
+    console.log('AuthService: Login initiated');
     return this.userManager.signinRedirect();
   }
 
