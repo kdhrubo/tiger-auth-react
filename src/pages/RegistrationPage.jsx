@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './RegistrationPage.css'; // We'll create this CSS file next
+import { AUTH_CREDENTIALS } from '../constants';
+
 
 const RegistrationPage = () => {
   const [formData, setFormData] = useState({
@@ -28,13 +30,18 @@ const RegistrationPage = () => {
     }
 
     try {
+      // Create basic auth header using the constants
+      const authHeader = 'Basic ' + btoa(`${AUTH_CREDENTIALS.USERNAME}:${AUTH_CREDENTIALS.PASSWORD}`);
+
       const response = await fetch('http://localhost:8080/v1/api/users/register', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': authHeader
         },
         body: JSON.stringify(formData),
       });
+
 
       const data = await response.json();
 

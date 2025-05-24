@@ -1,7 +1,7 @@
 import { WebStorageStateStore } from 'oidc-client-ts';
 
 const authConfig = {
-  authority: 'http://localhost:8080/realms/master', // Adjusted for potential Keycloak default
+  authority: 'http://localhost:8080', // Adjusted for potential Keycloak default
   client_id: 'public-client',
   redirect_uri: window.location.origin + '/callback',
   response_type: 'code',
